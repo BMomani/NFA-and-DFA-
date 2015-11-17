@@ -1,6 +1,6 @@
 # NFA-and-DFA-
-this is implementation for  NFA and DFA using C# with Accept function
-
+this is implementation for  NFA and DFA using C# with Test Input function
+A simple implementation of deterministic and non-deterministic finite state machine 
 it is simple, easy to track and understand implementation  and Object Orianted
 
 don't afrid from from large number of files belive me they are simple
