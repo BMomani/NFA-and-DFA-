@@ -4,3 +4,9 @@ C:\Users\MOMANI\documents\visual studio 2015\Projects\ConsoleApplication2\Consol
 C:\Users\MOMANI\documents\visual studio 2015\Projects\ConsoleApplication2\ConsoleApplication2\obj\Debug\ConsoleApplication2.exe
 C:\Users\MOMANI\documents\visual studio 2015\Projects\ConsoleApplication2\ConsoleApplication2\obj\Debug\ConsoleApplication2.pdb
 C:\Users\MOMANI\documents\visual studio 2015\Projects\ConsoleApplication2\ConsoleApplication2\bin\Debug\NfaAndDfa.exe.config
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\ConsoleApplication2\bin\Debug\NfaAndDfa.dll.config
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\ConsoleApplication2\bin\Debug\NfaAndDfa.dll
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\ConsoleApplication2\bin\Debug\NfaAndDfa.pdb
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\ConsoleApplication2\obj\Debug\NfaAndDfa.csprojResolveAssemblyReference.cache
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\ConsoleApplication2\obj\Debug\NfaAndDfa.dll
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\ConsoleApplication2\obj\Debug\NfaAndDfa.pdb

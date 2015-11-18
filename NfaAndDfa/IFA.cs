@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace ConsoleApplication2
+namespace NfaAndDfa
 {
     internal interface IFA
     {
@@ -10,6 +10,6 @@ namespace ConsoleApplication2
         State StartState { get; set; }
         IList FinalStates { get; set; }
         List<TransitionFunction> TransitionFunctions { get; set; }
-        void Accepts(string input);
+        void TestInput(string input);
     }
 }

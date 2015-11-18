@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApplication2
+namespace NfaAndDfa
 {
     internal class NFA : IFA
     {
@@ -61,7 +61,7 @@ namespace ConsoleApplication2
             set { m_transition_functions = value; }
         }
 
-        public void Accepts(string input)
+        public void TestInput(string input)
         {
             ConsoleWriter.Success("Trying to accept: " + input);
 

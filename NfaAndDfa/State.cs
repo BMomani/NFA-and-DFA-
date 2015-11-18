@@ -1,6 +1,4 @@
-using System;
-
-namespace ConsoleApplication2
+namespace NfaAndDfa
 {
     public class State : IState
     {

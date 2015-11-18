@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ConsoleApplication2
+namespace NfaAndDfa
 {
     internal class Program
     {
@@ -35,7 +31,7 @@ namespace ConsoleApplication2
 
             DFA dfa = new DFA(states, seqma, states[0], states[1], Transitions);
 
-            dfa.Accepts("010");
+            dfa.TestInput("010");
 
 
             Console.ReadKey();

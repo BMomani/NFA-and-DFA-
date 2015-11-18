@@ -2,10 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace ConsoleApplication2
+namespace NfaAndDfa
 {
     public class DFA : IFA
     {
@@ -160,7 +159,7 @@ namespace ConsoleApplication2
             }
         }
 
-        public void Accepts(string input)
+        public void TestInput(string input)
         {
             ConsoleWriter.Success("Trying to parse: " + input);
             if (InvalidInput(input))

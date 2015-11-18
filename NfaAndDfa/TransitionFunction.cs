@@ -1,4 +1,4 @@
-﻿namespace ConsoleApplication2
+﻿namespace NfaAndDfa
 {
     public class TransitionFunction : ITransitionFunction
     {

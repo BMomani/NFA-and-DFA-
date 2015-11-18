@@ -1,0 +1,8 @@
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaConsoleApplication\bin\Debug\NfaConsoleApplication.exe.config
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaConsoleApplication\bin\Debug\NfaConsoleApplication.exe
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaConsoleApplication\bin\Debug\NfaConsoleApplication.pdb
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaConsoleApplication\bin\Debug\NfaAndDfa.dll
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaConsoleApplication\bin\Debug\NfaAndDfa.pdb
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaConsoleApplication\obj\Debug\NfaConsoleApplication.csprojResolveAssemblyReference.cache
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaConsoleApplication\obj\Debug\NfaConsoleApplication.exe
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaConsoleApplication\obj\Debug\NfaConsoleApplication.pdb
