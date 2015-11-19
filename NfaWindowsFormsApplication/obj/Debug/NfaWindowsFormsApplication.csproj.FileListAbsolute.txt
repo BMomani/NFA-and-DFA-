@@ -1,0 +1,12 @@
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaWindowsFormsApplication\bin\Debug\NfaWindowsFormsApplication.exe
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaWindowsFormsApplication\bin\Debug\NfaWindowsFormsApplication.exe.config
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaWindowsFormsApplication\bin\Debug\NfaAndDfa.dll
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaWindowsFormsApplication\bin\Debug\NfaAndDfa.pdb
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaWindowsFormsApplication\obj\Debug\NfaWindowsFormsApplication.csprojResolveAssemblyReference.cache
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaWindowsFormsApplication\obj\Debug\NfaWindowsFormsApplication.MainForm.resources
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaWindowsFormsApplication\obj\Debug\NfaWindowsFormsApplication.NewMachineForm.resources
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaWindowsFormsApplication\obj\Debug\NfaWindowsFormsApplication.Properties.Resources.resources
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaWindowsFormsApplication\obj\Debug\NfaWindowsFormsApplication.csproj.GenerateResource.Cache
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaWindowsFormsApplication\obj\Debug\NfaWindowsFormsApplication.exe
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaWindowsFormsApplication\obj\Debug\NfaWindowsFormsApplication.pdb
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaWindowsFormsApplication\bin\Debug\NfaWindowsFormsApplication.pdb

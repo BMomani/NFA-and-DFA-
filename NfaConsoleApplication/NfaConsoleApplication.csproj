@@ -50,7 +50,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleApplication2\NfaAndDfa.csproj">
+    <ProjectReference Include="..\NfaAndDfa\NfaAndDfa.csproj">
       <Project>{3DC9AE25-3734-4AC6-8C9D-27FEC0AC191D}</Project>
       <Name>NfaAndDfa</Name>
     </ProjectReference>
