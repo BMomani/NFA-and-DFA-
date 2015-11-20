@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NfaAndDfa
 {
-    internal class NFA : IFA
+    public class NFA : IFiniteAutomaton
     {
         private IList m_states = null;
         private IList m_symbols = null;
@@ -61,15 +61,16 @@ namespace NfaAndDfa
             set { m_transition_functions = value; }
         }
 
-        public void TestInput(string input)
+        public bool TestInput(string input)
         {
             ConsoleWriter.Success("Trying to accept: " + input);
 
             if (Accepts(StartState, input, new StringBuilder()))
             {
-                return;
+                return true;
             }
             ConsoleWriter.Failure("Could not accept the input: " + input);
+            return false;
         }
 
         private bool Accepts(State currentState, string input, StringBuilder steps)

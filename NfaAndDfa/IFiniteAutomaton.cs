@@ -11,5 +11,6 @@ namespace NfaAndDfa
         IList FinalStates { get; set; }
         List<TransitionFunction> TransitionFunctions { get; set; }
         bool TestInput(string input);
+        string Log { get; set; }
     }
 }

@@ -50,7 +50,7 @@
     <Compile Include="NFA.cs" />
     <Compile Include="TransitionFunction.cs" />
     <Compile Include="DFA.cs" />
-    <Compile Include="IFA.cs" />
+    <Compile Include="IFiniteAutomaton.cs" />
     <Compile Include="IState.cs" />
     <Compile Include="ITransitionFunction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

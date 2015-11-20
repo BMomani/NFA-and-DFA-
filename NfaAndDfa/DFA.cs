@@ -6,7 +6,7 @@ using System.Text;
 
 namespace NfaAndDfa
 {
-    public class DFA : IFA
+    public class DFA : IFiniteAutomaton
     {
         private IList m_states = null;
         private IList m_symbols = null;
@@ -159,25 +159,25 @@ namespace NfaAndDfa
             }
         }
 
-        public void TestInput(string input)
+        public bool TestInput(string input)
         {
             ConsoleWriter.Success("Trying to parse: " + input);
             if (InvalidInput(input))
             {
-                return;
+                return false;
             }
             var currentState = StartState;
             var steps = new StringBuilder();
             foreach (var symbol in input.ToCharArray())
             {
-                var transitions = TransitionFunctions as List<TransitionFunction>;
+                var transitions = TransitionFunctions;
                 var transition = transitions.Find(t => t.InputState == currentState &&
                                                        t.InputSymbol == symbol);
                 if (transition == null)
                 {
                     ConsoleWriter.Failure("No transitions for current state and symbol");
                     ConsoleWriter.Failure(steps.ToString());
-                    return;
+                    return false;
                 }
                 currentState = transition.OutputState;
                 steps.Append(transition + "\n");
@@ -185,11 +185,12 @@ namespace NfaAndDfa
             if (FinalStates.Contains(currentState))
             {
                 ConsoleWriter.Success("Accepted the input with steps:\n" + steps);
-                return;
+                return true;
             }
             ConsoleWriter.Failure("Stopped in state " + currentState +
                                   " which is not a final state.");
             ConsoleWriter.Failure(steps.ToString());
+            return false;
         }
 
 

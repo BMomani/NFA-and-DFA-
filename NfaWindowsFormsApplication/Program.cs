@@ -14,11 +14,13 @@ namespace NfaWindowsFormsApplication
     }
     static class Program
     {
+        public static IFiniteAutomaton Machine;
         public static machineType MachineType;
         public static List<State> States;
-        public static State initialState;
+        public static State InitialState;
+        public static List<State> FinalStates;
 
-        public static List<Alphapit> seqma;
+        public static List<Alphapit> Seqma;
         public static List<TransitionFunction> Transitions; 
 
         /// <summary>
