@@ -14,7 +14,7 @@ namespace NfaWindowsFormsApplication
     }
     static class Program
     {
-        public static IFiniteAutomaton Machine;
+        public static IFiniteAutomaton Machine=null;
         public static machineType MachineType;
         public static List<State> States;
         public static State InitialState;

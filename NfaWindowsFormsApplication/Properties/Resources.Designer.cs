@@ -77,5 +77,14 @@ namespace NfaWindowsFormsApplication.Properties {
                 return ResourceManager.GetString("ErrorWord", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MachineType.
+        /// </summary>
+        internal static string MachineTypeWord {
+            get {
+                return ResourceManager.GetString("MachineTypeWord", resourceCulture);
+            }
+        }
     }
 }

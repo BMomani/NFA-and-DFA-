@@ -7,12 +7,12 @@ namespace NfaAndDfa
     public class NFA : IFiniteAutomaton
     {
         private IList m_states = null;
-        private IList m_symbols = null;
+        private List<char> m_symbols = null;
         private State m_start_state = null;
         private IList m_final_states = null;
         private List<TransitionFunction> m_transition_functions = null;
 
-        public NFA(IList mStates, IList mSymbols, State mStartState, IList mFinalStates, List<TransitionFunction> mTransitionFunctions)
+        public NFA(IList mStates, List<char> mSymbols, State mStartState, IList mFinalStates, List<TransitionFunction> mTransitionFunctions)
         {
             m_states = mStates;
             m_symbols = mSymbols;
@@ -21,7 +21,7 @@ namespace NfaAndDfa
             m_transition_functions = mTransitionFunctions;
         }
 
-        public NFA(IList mStates, IList mSymbols, State mStartState, State mFinalState, List<TransitionFunction> mTransitionFunctions)
+        public NFA(IList mStates, List<char> mSymbols, State mStartState, State mFinalState, List<TransitionFunction> mTransitionFunctions)
         {
             m_states = mStates;
             m_symbols = mSymbols;
@@ -37,7 +37,7 @@ namespace NfaAndDfa
             set { m_states = value; }
         }
 
-        public IList Symbols
+        public List<char> Symbols
         {
             get { return m_symbols; }
             set { m_symbols = value; }
@@ -61,17 +61,64 @@ namespace NfaAndDfa
             set { m_transition_functions = value; }
         }
 
+        public DFA ConvertToDfa()
+        {
+            var DfaSymbols = this.Symbols;
+            var DfaInitialState = this.StartState;
+
+            var DfaStates = new List<State> {DfaInitialState};
+
+            List<State> DfaFinalStates = null;
+            List<TransitionFunction> DfaTransitions = null;
+
+            foreach (var dfaCurrentState in DfaStates)
+            {
+                foreach (var symbol in DfaSymbols)
+                {
+                   var result = TransitionFunctions.FindAll(match: function => function.InputState.Name == dfaCurrentState.Name && function.InputSymbol == symbol);
+                    if (result.Count==1)
+                    {
+                        DfaTransitions.Add(new TransitionFunction(dfaCurrentState,result[0].OutputState,symbol));
+                        //need completion
+
+                    }
+                    if (result.Count == 0)
+                    {
+                        DfaTransitions.Add(new TransitionFunction(dfaCurrentState, GetTrapState(), symbol));
+                        //need completion
+                    }
+                    if (result.Count > 1)
+                    {
+                       
+                        //need completion
+                    }
+
+
+
+                }
+            }
+
+            return new DFA(DfaStates,DfaSymbols,DfaInitialState,DfaFinalStates,DfaTransitions);
+        }
+
+        private State GetTrapState()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public bool TestInput(string input)
         {
-            ConsoleWriter.Success("Trying to accept: " + input);
+            Log += ConsoleWriter.Success("Trying to accept: " + input);
 
             if (Accepts(StartState, input, new StringBuilder()))
             {
                 return true;
             }
-            ConsoleWriter.Failure("Could not accept the input: " + input);
+            Log += ConsoleWriter.Failure("Could not accept the input: " + input);
             return false;
         }
+
+        public string Log { get; set; }
 
         private bool Accepts(State currentState, string input, StringBuilder steps)
         {
@@ -90,7 +137,7 @@ namespace NfaAndDfa
             }
             if (FinalStates.Contains(currentState))
             {
-                ConsoleWriter.Success("Successfully accepted the input " + input + " " +
+                Log += ConsoleWriter.Success("Successfully accepted the input " + input + " " +
                                        "in the final state " + currentState +
                                        " with steps:\n" + steps);
                 return true;

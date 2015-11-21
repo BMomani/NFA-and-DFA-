@@ -6,7 +6,7 @@ namespace NfaAndDfa
     public interface IFiniteAutomaton
     {
         IList States { get; set; }
-        IList Symbols { get; set; }
+        List<char> Symbols { get; set; }
         State StartState { get; set; }
         IList FinalStates { get; set; }
         List<TransitionFunction> TransitionFunctions { get; set; }

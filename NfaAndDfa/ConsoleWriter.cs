@@ -4,22 +4,23 @@ namespace NfaAndDfa
 {
     public class ConsoleWriter
     {
-        public static void Failure(string message)
+        public static string Failure(string message)
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Write(message);
+            return Write(message);
         }
 
-        public static void Success(string message)
+        public static string Success(string message)
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Write(message);
+            return Write(message);
         }
 
-        private static void Write(string message)
+        private static string Write(string message)
         {
             Console.WriteLine(message);
             Console.ResetColor();
+            return message;
         }
     }
 }

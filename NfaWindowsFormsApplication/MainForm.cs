@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
+using NfaWindowsFormsApplication.Properties;
 using static NfaWindowsFormsApplication.Program;
 
 namespace NfaWindowsFormsApplication
@@ -14,26 +16,33 @@ namespace NfaWindowsFormsApplication
 
         private void FillMachineComponent()
         {
-            label6.Text = MachineType.ToString();
+            try
+            {
+                label6.Text = Resources.MachineTypeWord + MachineType;
 
-            foreach (var symbol in Machine.Symbols)
-            {
-                listBox1.Items.Add(symbol);
-            }
-            foreach (var state in Machine.States)
-            {
-                listBox2.Items.Add(state);
-            }
+                foreach (var symbol in Machine.Symbols)
+                {
+                    listBox1.Items.Add(symbol);
+                }
+                foreach (var state in Machine.States)
+                {
+                    listBox2.Items.Add(state);
+                }
 
-            listBox3.Items.Add(InitialState);
+                listBox3.Items.Add(InitialState);
 
-            foreach (var finalState in Machine.FinalStates)
-            {
-                listBox4.Items.Add(finalState);
+                foreach (var finalState in Machine.FinalStates)
+                {
+                    listBox4.Items.Add(finalState);
+                }
+                foreach (var transitionFunction in Machine.TransitionFunctions)
+                {
+                    listBox5.Items.Add(transitionFunction);
+                }
             }
-            foreach (var transitionFunction in Machine.TransitionFunctions)
+            catch (Exception exception)
             {
-                listBox5.Items.Add(transitionFunction);
+                Console.WriteLine(exception);
             }
         }
 
@@ -50,8 +59,23 @@ namespace NfaWindowsFormsApplication
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if(Machine!=null)
-                Machine.TestInput(textBox1.Text);
+            if (Machine != null)
+            {
+                if (Machine.TestInput(textBox1.Text))
+                {
+                    label7.ForeColor = Color.Green;
+                    label7.Text = "input accepted";
+                }
+                else
+                {
+                    label7.ForeColor = Color.Red;
+                    label7.Text = "input Rejected";
+
+                }
+                textBox2.Text = Machine.Log;
+
+            }
+
         }
     }
 }

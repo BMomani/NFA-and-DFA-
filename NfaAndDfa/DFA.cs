@@ -9,12 +9,12 @@ namespace NfaAndDfa
     public class DFA : IFiniteAutomaton
     {
         private IList m_states = null;
-        private IList m_symbols = null;
+        private List<char> m_symbols = null;
         private State m_start_state = null;
         private IList m_final_states = null;
         private List<TransitionFunction> m_transition_functions = null;
 
-        public DFA(IList states, IList symbols, State startstate, IList finalstates,
+        public DFA(IList states, List<char> symbols, State startstate, IList finalstates,
             List<TransitionFunction> transitionfunctions)
         {
             m_states = states;
@@ -25,7 +25,7 @@ namespace NfaAndDfa
             IsDFA(this);
         }
 
-        public DFA(IList states, IList symbols, State startstate, State finalstate,
+        public DFA(IList states, List<char> symbols, State startstate, State finalstate,
             List<TransitionFunction> transitionfunctions)
         {
             m_states = states;
@@ -43,7 +43,7 @@ namespace NfaAndDfa
             set { m_states = value; }
         }
 
-        public IList Symbols
+        public List<char> Symbols
         {
             get { return m_symbols; }
             set { m_symbols = value; }
@@ -80,7 +80,7 @@ namespace NfaAndDfa
                 if (!ar.Contains(ch))
                     ar.Add(ch);
             }
-            DFA1.m_symbols = (IList) ar.Clone();
+            DFA1.m_symbols =  (List<char>) ar.Clone();
             //check for valid states
             ar.Clear();
             foreach (object o in DFA1.m_states)
@@ -161,7 +161,8 @@ namespace NfaAndDfa
 
         public bool TestInput(string input)
         {
-            ConsoleWriter.Success("Trying to parse: " + input);
+            
+            Log+=ConsoleWriter.Success("Trying to parse: " + input) + "\n";
             if (InvalidInput(input))
             {
                 return false;
@@ -175,8 +176,8 @@ namespace NfaAndDfa
                                                        t.InputSymbol == symbol);
                 if (transition == null)
                 {
-                    ConsoleWriter.Failure("No transitions for current state and symbol");
-                    ConsoleWriter.Failure(steps.ToString());
+                    Log += ConsoleWriter.Failure("No transitions for current state and symbol") +"\n";
+                    Log += ConsoleWriter.Failure(steps.ToString()) + "\n"; 
                     return false;
                 }
                 currentState = transition.OutputState;
@@ -184,14 +185,16 @@ namespace NfaAndDfa
             }
             if (FinalStates.Contains(currentState))
             {
-                ConsoleWriter.Success("Accepted the input with steps:\n" + steps);
+                Log += ConsoleWriter.Success("Accepted the input with steps:\n" + steps)+"\n";
                 return true;
             }
-            ConsoleWriter.Failure("Stopped in state " + currentState +
-                                  " which is not a final state.");
-            ConsoleWriter.Failure(steps.ToString());
+            Log += ConsoleWriter.Failure("Stopped in state " + currentState +
+                                  " which is not a final state.") + "\n";
+            Log += ConsoleWriter.Failure(steps.ToString()) + "\n";
             return false;
         }
+
+        public string Log { get; set; }
 
 
         private bool InvalidInput(string input)
@@ -208,8 +211,8 @@ namespace NfaAndDfa
         {
             foreach (char symbol in input.Where(c => !Symbols.Contains(c)))
             {
-                ConsoleWriter.Failure("Could not accept the input since the symbol " + symbol +
-                                      " is not part of the alphabet");
+                Log += ConsoleWriter.Failure("Could not accept the input since the symbol " + symbol +
+                                      " is not part of the alphabet") + "\n";
                 return true;
             }
             return false;

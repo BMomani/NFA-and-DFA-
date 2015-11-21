@@ -120,4 +120,7 @@
   <data name="ErrorWord" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="MachineTypeWord" xml:space="preserve">
+    <value>MachineType</value>
+  </data>
 </root>

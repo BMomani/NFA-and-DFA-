@@ -56,23 +56,23 @@
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.btn_Previous = new System.Windows.Forms.Button();
-            this.btn_next = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.linkLabel6 = new System.Windows.Forms.LinkLabel();
             this.listBox5 = new System.Windows.Forms.ListBox();
             this.listBox6 = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.linkLabel7 = new System.Windows.Forms.LinkLabel();
             this.linkLabel8 = new System.Windows.Forms.LinkLabel();
             this.listBox7 = new System.Windows.Forms.ListBox();
+            this.listBox9 = new System.Windows.Forms.ListBox();
             this.listBox8 = new System.Windows.Forms.ListBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.listBox9 = new System.Windows.Forms.ListBox();
+            this.btn_Previous = new System.Windows.Forms.Button();
+            this.btn_next = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -83,8 +83,8 @@
             this.tabPage4.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            this.tabPage6.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.tabPage6.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -366,6 +366,7 @@
             this.listBox3.Name = "listBox3";
             this.listBox3.Size = new System.Drawing.Size(165, 160);
             this.listBox3.TabIndex = 2;
+            this.listBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listBox3_KeyPress);
             // 
             // label4
             // 
@@ -386,37 +387,6 @@
             this.tabPage5.Text = "Final states";
             this.tabPage5.UseVisualStyleBackColor = true;
             this.tabPage5.Enter += new System.EventHandler(this.tabPage5_Enter);
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Controls.Add(this.groupBox6);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(582, 266);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Transtion functions";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            this.tabPage6.Enter += new System.EventHandler(this.tabPage6_Enter);
-            // 
-            // btn_Previous
-            // 
-            this.btn_Previous.Location = new System.Drawing.Point(417, 309);
-            this.btn_Previous.Name = "btn_Previous";
-            this.btn_Previous.Size = new System.Drawing.Size(75, 23);
-            this.btn_Previous.TabIndex = 1;
-            this.btn_Previous.Text = "Previous";
-            this.btn_Previous.UseVisualStyleBackColor = true;
-            this.btn_Previous.Click += new System.EventHandler(this.btn_Previous_Click);
-            // 
-            // btn_next
-            // 
-            this.btn_next.Location = new System.Drawing.Point(498, 310);
-            this.btn_next.Name = "btn_next";
-            this.btn_next.Size = new System.Drawing.Size(75, 23);
-            this.btn_next.TabIndex = 1;
-            this.btn_next.Text = "Next";
-            this.btn_next.UseVisualStyleBackColor = true;
-            this.btn_next.Click += new System.EventHandler(this.btn_next_Click);
             // 
             // groupBox5
             // 
@@ -479,6 +449,17 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Select State To be Final then Click Add";
             // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.groupBox6);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(582, 266);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Transtion functions";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            this.tabPage6.Enter += new System.EventHandler(this.tabPage6_Enter);
+            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.comboBox1);
@@ -493,7 +474,15 @@
             this.groupBox6.Size = new System.Drawing.Size(570, 254);
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Final States";
+            this.groupBox6.Text = "Transtion functions";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(135, 126);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(68, 21);
+            this.comboBox1.TabIndex = 6;
             // 
             // linkLabel7
             // 
@@ -525,6 +514,14 @@
             this.listBox7.Size = new System.Drawing.Size(123, 160);
             this.listBox7.TabIndex = 2;
             // 
+            // listBox9
+            // 
+            this.listBox9.FormattingEnabled = true;
+            this.listBox9.Location = new System.Drawing.Point(395, 60);
+            this.listBox9.Name = "listBox9";
+            this.listBox9.Size = new System.Drawing.Size(156, 160);
+            this.listBox9.TabIndex = 2;
+            // 
             // listBox8
             // 
             this.listBox8.FormattingEnabled = true;
@@ -542,21 +539,25 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Create Transition Function coresponding to this Automata";
             // 
-            // comboBox1
+            // btn_Previous
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(135, 126);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(68, 21);
-            this.comboBox1.TabIndex = 6;
+            this.btn_Previous.Location = new System.Drawing.Point(417, 309);
+            this.btn_Previous.Name = "btn_Previous";
+            this.btn_Previous.Size = new System.Drawing.Size(75, 23);
+            this.btn_Previous.TabIndex = 1;
+            this.btn_Previous.Text = "Previous";
+            this.btn_Previous.UseVisualStyleBackColor = true;
+            this.btn_Previous.Click += new System.EventHandler(this.btn_Previous_Click);
             // 
-            // listBox9
+            // btn_next
             // 
-            this.listBox9.FormattingEnabled = true;
-            this.listBox9.Location = new System.Drawing.Point(395, 60);
-            this.listBox9.Name = "listBox9";
-            this.listBox9.Size = new System.Drawing.Size(156, 160);
-            this.listBox9.TabIndex = 2;
+            this.btn_next.Location = new System.Drawing.Point(498, 310);
+            this.btn_next.Name = "btn_next";
+            this.btn_next.Size = new System.Drawing.Size(75, 23);
+            this.btn_next.TabIndex = 1;
+            this.btn_next.Text = "Next";
+            this.btn_next.UseVisualStyleBackColor = true;
+            this.btn_next.Click += new System.EventHandler(this.btn_next_Click);
             // 
             // NewMachineForm
             // 
@@ -582,9 +583,9 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.tabPage5.ResumeLayout(false);
-            this.tabPage6.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.tabPage6.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.ResumeLayout(false);

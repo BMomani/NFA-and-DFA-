@@ -204,7 +204,7 @@ namespace NfaWindowsFormsApplication
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show(Resources.ErrorWord, exception.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(exception.Message, Resources.ErrorWord, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Console.WriteLine(exception);
                 }
             }
@@ -226,8 +226,7 @@ namespace NfaWindowsFormsApplication
             {
                 comboBox1.Items.Add(item);
             }
-            if (MachineType != null)
-                btn_next.Text = Resources.DoneWord;
+            btn_next.Text = Resources.DoneWord;
         }
 
         private void linkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -267,5 +266,15 @@ namespace NfaWindowsFormsApplication
             MachineType = (RadioButton)sender== radioButton2 ? machineType.Dfa : machineType.Nfa;
         }
 
+        private void listBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                //((IButtonControl) linkLabel4).PerformClick();
+                linkLabel4_LinkClicked(null,null);
+            }
+        }
     }
 }
