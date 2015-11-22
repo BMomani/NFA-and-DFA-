@@ -4,6 +4,12 @@ namespace NfaAndDfa
 {
     public class ConsoleWriter
     {
+        public static string Info(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            return Write(message);
+        }
+
         public static string Failure(string message)
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;

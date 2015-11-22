@@ -39,16 +39,20 @@ namespace NfaConsoleApplication
             try
             {
                
-                var list = new List<State>(){ new State("q0"), new State("q1") };
-                var list1 = new List<char>() { 'a', 'b' };
-                var list2 = new List<TransitionFunction>()
+                var states = new List<State>(){ new State("q0"), new State("q1"),new State("q2") };
+                var symbols = new List<Alphapits>() { 'a', 'b','c' };
+                var transitionFunctions = new List<TransitionFunction>()
                 {
-                    new TransitionFunction(new State("q0"), new State("q1"), list1[0])
+                    new TransitionFunction(new State("q0"), new State("q1"), symbols[0]),
+                    new TransitionFunction(new State("q1"), new State("q2"), symbols[1])
                 };
 
-                var nfa =new NFA(list, list1, list[0],list[1],list2);
+                var nfa =new NFA(states, symbols, states[0],states[2],transitionFunctions);
+                nfa.TestInput("ab");
                 var dfa = nfa.ConvertToDfa();
-                Console.WriteLine(dfa.ToString());
+                dfa.TestInput("ab");
+
+                //   Console.WriteLine(dfa.ToString());
 
                 //int a = 0;
             }

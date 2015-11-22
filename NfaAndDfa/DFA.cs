@@ -181,7 +181,7 @@ namespace NfaAndDfa
         public bool TestInput(string input)
         {
             
-            Log+=ConsoleWriter.Success("Trying to parse: " + input) + "\n";
+            Log+=ConsoleWriter.Info("Trying to parse: " + input) + "\n";
             if (InvalidInput(input))
             {
                 return false;

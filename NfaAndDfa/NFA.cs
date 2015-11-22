@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace NfaAndDfa
@@ -71,31 +72,32 @@ namespace NfaAndDfa
             List<State> DfaFinalStates = FinalStates;
             List<TransitionFunction> DfaTransitions = new List<TransitionFunction>();
 
-            for (int i = 0; i < DfaStates.Count; i++)
+            for (int i = 0; i < DfaStates.Count; i++)// i cant use foreach
             {
                 var dfaCurrentState = DfaStates[i];
                 foreach (var symbol in DfaSymbols)
                 {
-                    var result =
-                        TransitionFunctions.FindAll(
-                            match:
-                                function =>
-                                    function.InputState.Name == dfaCurrentState.Name && function.InputSymbol == symbol);
+                    var result = TransitionFunctions.FindAll(transitionFunction => transitionFunction.InputState.Name == dfaCurrentState.Name && transitionFunction.InputSymbol == symbol);
                     if (result.Count == 1)
                     {
                         DfaTransitions.Add(new TransitionFunction(dfaCurrentState, result[0].OutputState, symbol));
                         if (!DfaStates.Contains(result[0].OutputState))
                             DfaStates.Add(result[0].OutputState);
-                        //need completion
                     }
                     if (result.Count == 0)
                     {
                         DfaTransitions.Add(new TransitionFunction(dfaCurrentState,
                             GetTrapState(DfaStates, DfaTransitions), symbol));
-                        //need completion
                     }
                     if (result.Count > 1)
                     {
+                        string name = null; // create name to state from two states
+                        foreach (var function in result)
+                            name = name + function.InputState.Name;
+                        var combinedState = new State(name);
+                        DfaTransitions.Add(new TransitionFunction(dfaCurrentState, combinedState, symbol));
+                        if (!DfaStates.Contains(combinedState))
+                            DfaStates.Add(combinedState);
                         //need completion
                     }
                 }
@@ -124,7 +126,7 @@ namespace NfaAndDfa
 
         public bool TestInput(string input)
         {
-            Log += ConsoleWriter.Success("Trying to accept: " + input);
+            Log += ConsoleWriter.Info("Trying to accept: " + input);
 
             if (Accepts(StartState, input, new StringBuilder()))
             {
@@ -143,7 +145,7 @@ namespace NfaAndDfa
                 var transitions = GetAllTransitions(currentState, input[0]);
                 foreach (var transition in transitions)
                 {
-                    var currentSteps = new StringBuilder(steps.ToString() + transition);
+                    var currentSteps = new StringBuilder(steps.ToString() + transition+ "\r\n");
                     if (Accepts(transition.OutputState, input.Substring(1), currentSteps))
                     {
                         return true;
@@ -155,7 +157,7 @@ namespace NfaAndDfa
             {
                 Log += ConsoleWriter.Success("Successfully accepted the input " + input + " " +
                                        "in the final state " + currentState +
-                                       " with steps:\n" + steps);
+                                       " with steps:\r\n" + steps);
                 return true;
             }
             return false;
@@ -164,7 +166,7 @@ namespace NfaAndDfa
 
         private List<TransitionFunction> GetAllTransitions(State currentState, char c)
         {
-            return TransitionFunctions.FindAll(tf => tf.InputState == currentState && tf.InputSymbol == c);
+            return TransitionFunctions.FindAll(tf => tf.InputState.Name == currentState.Name && tf.InputSymbol == c);
         }
     }
 }
