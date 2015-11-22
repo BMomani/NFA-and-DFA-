@@ -9,10 +9,10 @@ namespace NfaAndDfa
         private IList m_states = null;
         private List<char> m_symbols = null;
         private State m_start_state = null;
-        private IList m_final_states = null;
+        private List<State> m_final_states = null;
         private List<TransitionFunction> m_transition_functions = null;
 
-        public NFA(IList mStates, List<char> mSymbols, State mStartState, IList mFinalStates, List<TransitionFunction> mTransitionFunctions)
+        public NFA(IList mStates, List<char> mSymbols, State mStartState, List<State> mFinalStates, List<TransitionFunction> mTransitionFunctions)
         {
             m_states = mStates;
             m_symbols = mSymbols;
@@ -26,7 +26,7 @@ namespace NfaAndDfa
             m_states = mStates;
             m_symbols = mSymbols;
             m_start_state = mStartState;
-            m_final_states = new ArrayList();
+            m_final_states = new List<State>();
             m_final_states.Add(mFinalState);
             m_transition_functions = mTransitionFunctions;
         }
@@ -49,7 +49,7 @@ namespace NfaAndDfa
             set { m_start_state = value; }
         }
 
-        public IList FinalStates
+        public List<State> FinalStates
         {
             get { return m_final_states; }
             set { m_final_states = value; }
@@ -68,42 +68,58 @@ namespace NfaAndDfa
 
             var DfaStates = new List<State> {DfaInitialState};
 
-            List<State> DfaFinalStates = null;
-            List<TransitionFunction> DfaTransitions = null;
+            List<State> DfaFinalStates = FinalStates;
+            List<TransitionFunction> DfaTransitions = new List<TransitionFunction>();
 
-            foreach (var dfaCurrentState in DfaStates)
+            for (int i = 0; i < DfaStates.Count; i++)
             {
+                var dfaCurrentState = DfaStates[i];
                 foreach (var symbol in DfaSymbols)
                 {
-                   var result = TransitionFunctions.FindAll(match: function => function.InputState.Name == dfaCurrentState.Name && function.InputSymbol == symbol);
-                    if (result.Count==1)
+                    var result =
+                        TransitionFunctions.FindAll(
+                            match:
+                                function =>
+                                    function.InputState.Name == dfaCurrentState.Name && function.InputSymbol == symbol);
+                    if (result.Count == 1)
                     {
-                        DfaTransitions.Add(new TransitionFunction(dfaCurrentState,result[0].OutputState,symbol));
+                        DfaTransitions.Add(new TransitionFunction(dfaCurrentState, result[0].OutputState, symbol));
+                        if (!DfaStates.Contains(result[0].OutputState))
+                            DfaStates.Add(result[0].OutputState);
                         //need completion
-
                     }
                     if (result.Count == 0)
                     {
-                        DfaTransitions.Add(new TransitionFunction(dfaCurrentState, GetTrapState(), symbol));
+                        DfaTransitions.Add(new TransitionFunction(dfaCurrentState,
+                            GetTrapState(DfaStates, DfaTransitions), symbol));
                         //need completion
                     }
                     if (result.Count > 1)
                     {
-                       
                         //need completion
                     }
-
-
-
                 }
             }
 
-            return new DFA(DfaStates,DfaSymbols,DfaInitialState,DfaFinalStates,DfaTransitions);
+            return new DFA(DfaStates, DfaSymbols, DfaInitialState, DfaFinalStates, DfaTransitions);
         }
 
-        private State GetTrapState()
+        private State GetTrapState(List<State> dfaStates, List<TransitionFunction> dfaTransitions)
         {
-            throw new System.NotImplementedException();
+           
+            var result= dfaStates.Find(state => state.Name == "*");
+            if (result != null)
+                return result;
+            else
+            {
+                var trapStat = new State("*");
+                foreach (var symbol in Symbols)
+                {
+                    dfaTransitions.Add(new TransitionFunction(trapStat,trapStat,symbol));
+                }
+                dfaStates.Add(trapStat);
+                return trapStat;
+            }
         }
 
         public bool TestInput(string input)

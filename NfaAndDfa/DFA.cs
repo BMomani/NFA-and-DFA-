@@ -8,13 +8,14 @@ namespace NfaAndDfa
 {
     public class DFA : IFiniteAutomaton
     {
+
         private IList m_states = null;
         private List<char> m_symbols = null;
         private State m_start_state = null;
-        private IList m_final_states = null;
+        private List<State> m_final_states = null;
         private List<TransitionFunction> m_transition_functions = null;
 
-        public DFA(IList states, List<char> symbols, State startstate, IList finalstates,
+        public DFA(IList states, List<char> symbols, State startstate, List<State> finalstates,
             List<TransitionFunction> transitionfunctions)
         {
             m_states = states;
@@ -31,7 +32,7 @@ namespace NfaAndDfa
             m_states = states;
             m_symbols = symbols;
             m_start_state = startstate;
-            m_final_states = new ArrayList();
+            m_final_states = new List<State>();
             m_final_states.Add(finalstate);
             m_transition_functions = transitionfunctions;
             IsDFA(this);
@@ -55,7 +56,7 @@ namespace NfaAndDfa
             set { m_start_state = value; }
         }
 
-        public IList FinalStates
+        public List<State> FinalStates
         {
             get { return m_final_states; }
             set { m_final_states = value; }
@@ -70,17 +71,18 @@ namespace NfaAndDfa
         private static void IsDFA(DFA DFA1)
         {
             ArrayList ar = new ArrayList(); //to be used for earasing duplicated entries
-            //check for valid symbols
-            foreach (object o in DFA1.m_symbols)
+                                            //check for valid symbols
+            var dupliChar = new List<char>();
+           foreach (object o in DFA1.m_symbols)
             {
                 if (!(o is char))
                     throw new Exception
                         ("one of your input symbols is not in the correct format");
                 char ch = (char) o;
-                if (!ar.Contains(ch))
-                    ar.Add(ch);
+                if (!dupliChar.Contains(ch))
+                    dupliChar.Add(ch);
             }
-            DFA1.m_symbols =  (List<char>) ar.Clone();
+            DFA1.m_symbols = dupliChar;
             //check for valid states
             ar.Clear();
             foreach (object o in DFA1.m_states)
@@ -157,6 +159,23 @@ namespace NfaAndDfa
                     }
                 }
             }
+        }
+
+        public override string ToString()
+        {
+            return $"States: {Print(States)}\n Symbols: {Print(Symbols)}\n StartState: {StartState}\n FinalStates: {Print(FinalStates)}\n TransitionFunctions: {Print(TransitionFunctions)}";
+        }
+
+
+        private static string Print(IList list)
+        {
+            StringBuilder builder = new StringBuilder();
+            foreach (object o in list)
+            {
+                builder.Append(o).Append("&"); // Append string to StringBuilder
+            }
+           return builder.ToString(); // Get string from StringBuilder
+           
         }
 
         public bool TestInput(string input)

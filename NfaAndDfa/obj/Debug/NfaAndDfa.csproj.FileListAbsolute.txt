@@ -15,3 +15,4 @@ C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaAndDfa\bin\Debug\NfaAndDfa.dll
 C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaAndDfa\bin\Debug\NfaAndDfa.pdb
 C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaAndDfa\obj\Debug\NfaAndDfa.dll
 C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaAndDfa\obj\Debug\NfaAndDfa.pdb
+C:\Users\MOMANI\Desktop\NFA-and-DFA-\NfaAndDfa\obj\Debug\NfaAndDfa.csprojResolveAssemblyReference.cache

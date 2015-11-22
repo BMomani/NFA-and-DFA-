@@ -1,0 +1,56 @@
+[33mcommit 7d1cf1d1c62a15333f78758cca837568a8ce4458[m
+Author: MOMANI1 <mmn1078@gmail.com>
+Date:   Sat Nov 21 18:44:39 2015 +0200
+
+    create function convert to dfa, change IList type for states to list<State>
+
+[33mcommit 06f39051c591d1b9ef4579d38035509ca221f589[m
+Author: MOMANI1 <mmn1078@gmail.com>
+Date:   Fri Nov 20 23:13:07 2015 +0200
+
+    add log property to the interface and use it in UI, add func ConvertToDFA with no implimentation
+
+[33mcommit 6dd452cdc2ff69f3a6b8c38651d5ca5817388636[m
+Merge: 8ca5adb 279de92
+Author: MOMANI1 <mmn1078@gmail.com>
+Date:   Fri Nov 20 21:21:02 2015 +0200
+
+    finish windows form application 90%, change testInput to retern bool
+
+[33mcommit 8ca5adb365807d21930f0052e36b3fc7a67915c0[m
+Author: MOMANI1 <mmn1078@gmail.com>
+Date:   Thu Nov 19 12:14:01 2015 +0200
+
+    create windows form application finished 20%
+
+[33mcommit be89099ee5b873e8666629858d3a3087f98f6920[m
+Author: MOMANI1 <mmn1078@gmail.com>
+Date:   Wed Nov 18 21:06:38 2015 +0200
+
+    make project as library and isolate console applitation with tiny modification on cade such as alphapit using
+
+[33mcommit 279de924572ec2910d849477b64daf4e699dd98f[m
+Author: Basheer LMOMANI <mmn1078@gMAIL.COM>
+Date:   Tue Nov 17 18:38:35 2015 +0200
+
+    Update README.md
+    
+    to bitter find in search
+
+[33mcommit f5468669f5d93cbd6910f744fa1bfe0245eb6060[m
+Author: MOMANI1 <mmn1078@gmail.com>
+Date:   Mon Nov 16 02:55:35 2015 +0200
+
+    upload project
+
+[33mcommit 981490908d8cacb1fa7643779e984b6732ee6629[m
+Author: Basheer LMOMANI <mmn1078@gMAIL.COM>
+Date:   Mon Nov 16 02:13:54 2015 +0200
+
+    Create README.md
+
+[33mcommit ba4aff6fc3f4e2fdb3acfed0402596a6b7163325[m
+Author: Basheer LMOMANI <mmn1078@gMAIL.COM>
+Date:   Mon Nov 16 01:39:30 2015 +0200
+
+    Initial commit
